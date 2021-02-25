@@ -1,1 +1,1 @@
-# Bookstore react application
+# Autoservice react application for diploma work 2021
