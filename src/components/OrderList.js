@@ -5,7 +5,7 @@ import {storeProducts} from '../data';
 import {ProductConsumer} from '../context';
 import BookDataService from "../service/BookDataService";
 
-export default class ProductList extends Component {
+export default class OrderList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -31,8 +31,9 @@ export default class ProductList extends Component {
             <React.Fragment>
                 <div className="py-5">
                     <div className="container">
-                        <Title name="our" title="products"></Title>
-                        <h3>All Books</h3>
+                        {/* <Title name="our" title="products"></Title> */}
+                        <Title name="Orders"></Title>
+                        <h3>All Orders</h3>
                         <table className="table">
                             <thead>
                                 <tr>
