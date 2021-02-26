@@ -3,13 +3,13 @@ import Product from './Product';
 import Title from './Title';
 import {storeProducts} from '../data';
 import {ProductConsumer} from '../context';
-import BookDataService from "../service/BookDataService";
+import OrderService from "../service/OrderService";
 
 export default class OrderList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            books: [],
+            orders: [],
             message: null
         }
         this.refreshProducts = this.refreshProducts.bind(this);
@@ -18,11 +18,11 @@ export default class OrderList extends Component {
         this.refreshProducts();
     }
     refreshProducts() {
-        BookDataService.getAllBooks()
+        OrderService.getAllOrders()
             .then(
                 response => {
                     console.log(response);
-                    this.setState({books: response.data})
+                    this.setState({orders: response.data})
                 }
             )
     }
@@ -47,15 +47,15 @@ export default class OrderList extends Component {
                             </thead>
                             <tbody>
                                 {
-                                    this.state.books.map(
-                                        book =>
-                                            <tr key={book.id}>
-                                                <td>{book.title}</td>
-                                                <td>{book.authorId}</td>
-                                                <td>{book.publisherId}</td>
-                                                <td>{book.year}</td>
-                                                <td>{book.ISBN}</td>
-                                                <td>{book.typeId}</td>
+                                    this.state.orders.map(
+                                        order =>
+                                            <tr key={order.id}> {/* TODO: fix fieds */}
+                                                <td>{order.title}</td>
+                                                <td>{order.authorId}</td>
+                                                <td>{order.publisherId}</td>
+                                                <td>{order.year}</td>
+                                                <td>{order.ISBN}</td>
+                                                <td>{order.typeId}</td>
                                             </tr>
                                     )
                                 }

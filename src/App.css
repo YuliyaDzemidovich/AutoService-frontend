@@ -5,6 +5,12 @@
   --mainWhite:#f3f3f3;
   --mainDark:#232528;
   --mainYellow:#ffa400;
+  --lightGreen: #A6F1A6;
+  --green: #1FB81F;
+  --lightRed: #FBABAB;
+  --red: #D91818;
+  --lightGray: #666666;
+  --black: #000000;
 }
 body{
   font-family: "Oswald", sans-serif !important; /* !important to make Bootstrap to use it - not to overwrite */
@@ -21,4 +27,7 @@ body{
 }
 .text-bright{
   color: var(--lightBlue);
+}
+.crudButtons {
+  text-align: right;
 }
