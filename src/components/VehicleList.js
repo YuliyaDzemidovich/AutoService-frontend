@@ -9,6 +9,8 @@ import { ButtonDelete } from "./ButtonDelete";
 import { ButtonEdit } from "./ButtonEdit";
 import {styles} from "../App.css";
 
+import CrudButtonContainer from "./CrudButtonContainer";
+
 export default class VehicleList extends Component {
     constructor(props) {
         super(props);
@@ -25,7 +27,6 @@ export default class VehicleList extends Component {
         VehicleService.getAllVehicles()
             .then(
                 response => {
-                    console.log(response);
                     this.setState({vehicles: response.data})
                 }
             )
@@ -37,6 +38,7 @@ export default class VehicleList extends Component {
                     <div className="container">
                         <Title name="Vehicles"></Title>
                         <div className="py-2 crudButtons">
+                            <CrudButtonContainer></CrudButtonContainer>
                             <ButtonAdd>Add</ButtonAdd>
                             <ButtonEdit>Edit</ButtonEdit>
                             <ButtonDelete>Delete</ButtonDelete>
