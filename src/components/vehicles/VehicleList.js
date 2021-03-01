@@ -1,15 +1,14 @@
 import React, { Component } from "react";
-import Product from './Product';
-import Title from './Title';
-import {storeProducts} from '../data';
-import {ProductConsumer} from '../context';
-import VehicleService from "../service/VehicleService";
-import { ButtonAdd } from "./ButtonAdd";
-import { ButtonDelete } from "./ButtonDelete";
-import { ButtonEdit } from "./ButtonEdit";
-import {styles} from "../App.css";
+import Product from '../Product';
+import Title from '../Title';
+import {storeProducts} from '../../data';
+import {ProductConsumer} from '../../context';
+import VehicleService from "../../service/VehicleService";
+import { ButtonDelete } from "../ButtonDelete";
+import {styles} from "../../App.css";
 
-import CrudButtonContainer from "./CrudButtonContainer";
+import CrudButtonContainer from "../CrudButtonContainer";
+import ButtonContainer from "./ButtonContainer";
 
 export default class VehicleList extends Component {
     constructor(props) {
@@ -38,9 +37,8 @@ export default class VehicleList extends Component {
                     <div className="container">
                         <Title name="Vehicles"></Title>
                         <div className="py-2 crudButtons">
-                            <CrudButtonContainer></CrudButtonContainer>
-                            <ButtonAdd>Add</ButtonAdd>
-                            <ButtonEdit>Edit</ButtonEdit>
+                            <ButtonContainer text="Add"/>
+                            <ButtonContainer text="Edit"/>
                             <ButtonDelete>Delete</ButtonDelete>
                         </div>
                         <table className="table">

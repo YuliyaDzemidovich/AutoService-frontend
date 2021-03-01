@@ -10,7 +10,7 @@ import Default from "./components/Default";
 import ClientList from "./components/ClientList";
 import EmployeeList from "./components/EmployeeList";
 import Statistics from "./components/Statistics";
-import VehicleList from "./components/VehicleList";
+import VehicleList from "./components/vehicles/VehicleList";
 
 function App() {
   return (

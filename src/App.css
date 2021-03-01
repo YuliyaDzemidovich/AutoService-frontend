@@ -96,7 +96,9 @@ body{
 
 .modal-body {
   padding-top: 0.25em;
-}._hide-visual {
+}
+
+._hide-visual {
   border: 0 !important;
   clip: rect(0 0 0 0) !important;
   height: 1px !important;
@@ -111,4 +113,39 @@ body{
 .scroll-lock {
   overflow: hidden;
   margin-right: 17px;
+}
+
+.modal-button {
+  text-transform: capitalize !important;
+  font-size: 1.4rem !important;
+  background: transparent !important;
+  border-radius: 0.5rem !important;
+  padding: 0.2rem 0.5rem !important;
+  cursor: pointer !important;
+  margin: 0.2rem 0.5rem 0.2rem 0 !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+.modal-button.Add {
+  border: 0.05rem solid var(--green) !important;
+  color: var(--green) !important;
+}
+
+.modal-button.Add:hover {
+  background: var(--green) !important;
+  color: var(--mainWhite) !important;
+}
+
+.modal-button.Edit {
+  border: 0.05rem solid var(--lightGray);
+  color: var(--lightGray);
+}
+
+.modal-button.Edit:hover {
+  background: var(--lightGray) !important;
+  color: var(--mainWhite) !important;
+}
+
+.modal-button:focus {
+  outline: none !important;
 }
