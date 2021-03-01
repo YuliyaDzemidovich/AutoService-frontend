@@ -42,6 +42,7 @@ export class Container extends Component {
             buttonRef={(n) => (this.closeButton = n)}
             closeModal={this.closeModal}
             onKeyDown={this.onKeyDown}
+            type={this.props.type}
             /* onClickOutside={this.onClickOutside} */
           />
         ) : null}

@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Form } from './Form';
+import {FormSwitcher} from './FormSwitcher';
 import FocusTrap from 'focus-trap-react';
 export const Modal = ({
-  onClickOutside,
+  /*onClickOutside,*/
+  type,
   onKeyDown,
   modalRef,
   buttonRef,
@@ -18,7 +20,7 @@ export const Modal = ({
         tabIndex="-1"
         aria-modal="true"
         className="modal-cover"
-        onClick={onClickOutside}
+        // onClick={onClickOutside}
         onKeyDown={onKeyDown}
       >
         <div className="modal-area" ref={modalRef}>
@@ -37,7 +39,7 @@ export const Modal = ({
             </svg>
           </button>
           <div className="modal-body">
-            <Form onSubmit={onSubmit} />
+            <FormSwitcher onSubmit={onSubmit} type={type}/>
           </div>
         </div>
       </aside>
