@@ -15,14 +15,14 @@ export class Container extends Component {
     this.toggleScrollLock();
   };
   onKeyDown = (event) => {
-    if (event.keyCode === 27) {
+    if (event.keyCode === 27) { // ESC key
       this.closeModal();
     }
   };
-  onClickOutside = (event) => {
+  /* onClickOutside = (event) => {
     if (this.modal && this.modal.contains(event.target)) return;
     this.closeModal();
-  };
+  }; */
 
   toggleScrollLock = () => {
     document.querySelector('html').classList.toggle('scroll-lock');
@@ -42,7 +42,7 @@ export class Container extends Component {
             buttonRef={(n) => (this.closeButton = n)}
             closeModal={this.closeModal}
             onKeyDown={this.onKeyDown}
-            onClickOutside={this.onClickOutside}
+            /* onClickOutside={this.onClickOutside} */
           />
         ) : null}
       </React.Fragment>
