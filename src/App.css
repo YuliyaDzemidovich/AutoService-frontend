@@ -149,3 +149,7 @@ body{
 .modal-button:focus {
   outline: none !important;
 }
+
+.selected-row {
+  background-color: yellow !important;
+}
