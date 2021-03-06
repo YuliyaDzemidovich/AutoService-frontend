@@ -66,6 +66,7 @@ export default class VehicleList extends Component {
                                     <th>Year</th>
                                     <th>Color</th>
                                     <th>VIN</th>
+                                    <th>Brand Country</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -79,6 +80,7 @@ export default class VehicleList extends Component {
                                                 <td>{vehicle.dateOfProduction}</td>
                                                 <td>{vehicle.color}</td>
                                                 <td>{vehicle.vin}</td>
+                                                <td>{vehicle.model.brand.country.name}</td>
                                             </tr>
                                     )
                                 }
