@@ -22,6 +22,9 @@ export default class VehicleList extends Component {
     componentDidMount() {
         this.refreshProducts();
     }
+    componentDidUpdate() {
+        console.log("componentDidUpdate");
+    }
     refreshProducts() {
         VehicleService.getAllVehicles()
             .then(
@@ -55,8 +58,8 @@ export default class VehicleList extends Component {
                         <Title name="Vehicles"></Title>
                         <div className="py-2 crudButtons">
                             <ButtonContainer text="Add" type="vehicle"/>
-                            <ButtonContainer text="Edit" type="vehicle"/>
-                            <ButtonDelete>Delete</ButtonDelete>
+                            <ButtonContainer className={this.state.isTableRowSelected ? "" : "btn-disable"} text="Edit" type="vehicle"/>
+                            <ButtonDelete className={this.state.isTableRowSelected ? "" : "btn-disable"}>Delete</ButtonDelete>
                         </div>
                         <table className="table">
                             <thead>

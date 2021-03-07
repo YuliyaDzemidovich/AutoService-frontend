@@ -153,3 +153,15 @@ body{
 .selected-row {
   background-color: yellow !important;
 }
+
+.btn-disable
+{
+cursor: not-allowed !important;
+pointer-events: none !important;
+
+/*Button disabled - CSS color class*/
+color: #c0c0c0 !important;
+background-color: #ffffff !important;
+border: 0.05rem solid #ffffff !important;
+
+}

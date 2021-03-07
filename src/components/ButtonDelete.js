@@ -18,4 +18,12 @@ export const ButtonDelete = styled.button`
     &:focus {
         outline: none;
     }
+
+    // cursor: not-allowed;
+    // pointer-events: none;
+
+    // /*Button disabled - CSS color class*/
+    // color: #c0c0c0;
+    // background-color: #ffffff;
+    // border: 0.05rem solid #ffffff;
 `;

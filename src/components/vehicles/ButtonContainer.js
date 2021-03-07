@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from '../Container';
 
-const ButtonContainer = ({text, type}) => {
+const ButtonContainer = ({text, type, className}) => {
   const triggerText = text;
   const triggerType = type;
   const onSubmit = (event) => {
@@ -11,7 +11,7 @@ const ButtonContainer = ({text, type}) => {
   };
   return (
     <span className="ButtonContainer">
-      <Container triggerText={triggerText} onSubmit={onSubmit} type={triggerType} />
+      <Container triggerText={triggerText} onSubmit={onSubmit} type={triggerType} className={className}/>
     </span>
     );
  };
