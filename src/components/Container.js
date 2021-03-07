@@ -44,6 +44,8 @@ export class Container extends Component {
             closeModal={this.closeModal}
             onKeyDown={this.onKeyDown}
             type={this.props.type}
+            obj={this.props.obj}
+            triggerText={this.props.triggerText}
             /* onClickOutside={this.onClickOutside} */
           />
         ) : null}

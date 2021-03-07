@@ -5,7 +5,9 @@ import {FormSwitcher} from './FormSwitcher';
 import FocusTrap from 'focus-trap-react';
 export const Modal = ({
   /*onClickOutside,*/
+  obj,
   type,
+  triggerText,
   onKeyDown,
   modalRef,
   buttonRef,
@@ -39,7 +41,7 @@ export const Modal = ({
             </svg>
           </button>
           <div className="modal-body">
-            <FormSwitcher onSubmit={onSubmit} type={type}/>
+            <FormSwitcher onSubmit={onSubmit} type={type} triggerText={triggerText} obj={obj}/>
           </div>
         </div>
       </aside>

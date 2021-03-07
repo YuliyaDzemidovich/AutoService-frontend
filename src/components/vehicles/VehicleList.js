@@ -15,7 +15,8 @@ export default class VehicleList extends Component {
             message: null,
             rowEdit: null,
             selectedRowIndex: [],
-            isTableRowSelected: false
+            isTableRowSelected: false,
+            objectForEdit: null
         }
         this.refreshProducts = this.refreshProducts.bind(this);
     }
@@ -23,7 +24,7 @@ export default class VehicleList extends Component {
         this.refreshProducts();
     }
     componentDidUpdate() {
-        console.log("componentDidUpdate");
+        // console.log("componentDidUpdate");
     }
     refreshProducts() {
         VehicleService.getAllVehicles()
@@ -32,6 +33,10 @@ export default class VehicleList extends Component {
                     this.setState({vehicles: response.data})
                 }
             )
+    }
+    prepareEdit (id, e) {
+        this.selectRow(id,e);
+        this.getObjectForEdit();
     }
     selectRow (id, e) {
         e.preventDefault();
@@ -48,7 +53,15 @@ export default class VehicleList extends Component {
             this.setState({selectedRowIndex: this.state.selectedRowIndex = id,
                             isTableRowSelected: this.state.isTableRowSelected = true});
         }
-        //console.log(this.state.selectedRowIndex);
+    }
+    getObjectForEdit () {
+        this.state.vehicles.map(
+            vehicle => {
+                if (vehicle.id === this.state.selectedRowIndex) {
+                    this.setState({objectForEdit: this.state.objectForEdit = vehicle});
+                }
+            }
+        )
     }
     render() {
         return (
@@ -58,7 +71,8 @@ export default class VehicleList extends Component {
                         <Title name="Vehicles"></Title>
                         <div className="py-2 crudButtons">
                             <ButtonContainer text="Add" type="vehicle"/>
-                            <ButtonContainer className={this.state.isTableRowSelected ? "" : "btn-disable"} text="Edit" type="vehicle"/>
+                            <ButtonContainer className={this.state.isTableRowSelected ? "" : "btn-disable"} type="vehicle" 
+                                text="Edit" obj={this.state.objectForEdit}/>
                             <ButtonDelete className={this.state.isTableRowSelected ? "" : "btn-disable"}>Delete</ButtonDelete>
                         </div>
                         <table className="table">
@@ -76,7 +90,7 @@ export default class VehicleList extends Component {
                                 {
                                     this.state.vehicles.map(
                                         vehicle =>
-                                            <tr key={vehicle.id} onClick={(e) => this.selectRow(vehicle.id, e)} 
+                                            <tr key={vehicle.id} onClick={(e) => this.prepareEdit(vehicle.id, e)} 
                                                 className={this.state.selectedRowIndex == vehicle.id ? "selected-row" : "" }>
                                                 <td>{vehicle.model.brand.name}</td>
                                                 <td>{vehicle.model.name}</td>
