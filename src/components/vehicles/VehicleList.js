@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Title from '../Title';
 import VehicleService from "../../service/VehicleService";
-import { ButtonDelete } from "../ButtonDelete";
 import {styles} from "../../App.css";
 
 import ButtonContainer from "./ButtonContainer";
@@ -73,7 +72,9 @@ export default class VehicleList extends Component {
                             <ButtonContainer text="Add" type="vehicle"/>
                             <ButtonContainer className={this.state.isTableRowSelected ? "" : "btn-disable"} type="vehicle" 
                                 text="Edit" obj={this.state.objectForEdit}/>
-                            <ButtonDelete className={this.state.isTableRowSelected ? "" : "btn-disable"}>Delete</ButtonDelete>
+                            {/* <ButtonDelete className={this.state.isTableRowSelected ? "" : "btn-disable"}>Delete</ButtonDelete> */}
+                            <ButtonContainer className={this.state.isTableRowSelected ? "" : "btn-disable"} type="vehicle" 
+                                text="Delete" obj={this.state.objectForEdit}/>
                         </div>
                         <table className="table">
                             <thead>
