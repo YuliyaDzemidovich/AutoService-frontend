@@ -13,11 +13,10 @@ export default class DeleteVehicleForm extends Component {
       }
   }
   componentDidMount() {
-    this.getBrand();
+    this.getInfo();
   }
-  getBrand() {
+  getInfo() {
     if (this.props.triggerText == "Delete" && this.props.obj != null) {
-      //console.log(this.props.obj.model.brand.name);
       this.setState({brand: this.state.brand = this.props.obj.model.brand.name});
       this.setState({model: this.state.model = this.props.obj.model.name});
       this.setState({year: this.state.year = this.props.obj.dateOfProduction});
