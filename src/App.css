@@ -173,5 +173,18 @@ pointer-events: none !important;
 color: #c0c0c0 !important;
 background-color: #ffffff !important;
 border: 0.05rem solid #ffffff !important;
+}
 
+.center{
+  text-align: center;
+}
+
+.confirm_buttons{
+  width: 50%;
+}
+
+@media (max-width: 500px) {
+  .confirm_buttons{
+    width: 100% !important;
+  }
 }

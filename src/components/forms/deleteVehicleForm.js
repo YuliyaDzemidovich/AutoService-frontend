@@ -29,43 +29,18 @@ export default class DeleteVehicleForm extends Component {
    render() { 
      return (
       <form onSubmit={this.props.onSubmit}>
-        <div className="form-group">
-          <label htmlFor="brand">Brand</label>
-          <input className="form-control" id="brand" type="text" defaultValue={this.state.brand}/>
+        <div>
+          <label>Delete this vehicle?</label>
+        </div>
+        <div className="center">
+          <label>{this.state.brand} {this.state.model}</label>
         </div>
         <div className="form-group">
-          <label htmlFor="model">Model</label>
-          <input className="form-control" id="model" type="text" defaultValue={this.state.model}/>
-        </div>
-        <div className="form-group">
-          <label htmlFor="year">Year</label>
-          <input 
-            className="form-control" 
-            id="year"
-            placeholder="YYYY"
-            type="text" 
-            defaultValue={this.state.year} />
-        </div>
-        <div className="form-group">
-          <label htmlFor="color">Color</label>
-          <input className="form-control" id="color" type="text" defaultValue={this.state.color}/>
-        </div>
-        <div className="form-group">
-          <label htmlFor="vin">VIN</label>
-          <input 
-            className="form-control" 
-            id="vin"
-            placeholder="17 signs"
-            type="text" 
-            defaultValue="Delete me YOO!!!" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="brand_country">Brand Country</label>
-          <input className="form-control" id="brand_country" type="text" defaultValue={this.state.brandCountry}/>
-        </div>
-        <div className="form-group">
-          <button className="form-control btn btn-primary" type="submit">
-            Submit
+          <button className="btn btn-danger confirm_buttons" type="submit">
+            Yes
+          </button>
+          <button className="btn btn-secondary confirm_buttons" type="button">
+            No
           </button>
         </div>
       </form>
