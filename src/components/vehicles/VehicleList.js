@@ -72,7 +72,6 @@ export default class VehicleList extends Component {
                             <ButtonContainer text="Add" type="vehicle"/>
                             <ButtonContainer className={this.state.isTableRowSelected ? "" : "btn-disable"} type="vehicle" 
                                 text="Edit" obj={this.state.objectForEdit}/>
-                            {/* <ButtonDelete className={this.state.isTableRowSelected ? "" : "btn-disable"}>Delete</ButtonDelete> */}
                             <ButtonContainer className={this.state.isTableRowSelected ? "" : "btn-disable"} type="vehicle" 
                                 text="Delete" obj={this.state.objectForEdit}/>
                         </div>

@@ -41,7 +41,7 @@ export const Modal = ({
             </svg>
           </button>
           <div className="modal-body">
-            <FormSwitcher onSubmit={onSubmit} type={type} triggerText={triggerText} obj={obj}/>
+            <FormSwitcher parentCallbackCloseModal={closeModal} onSubmit={onSubmit} type={type} triggerText={triggerText} obj={obj}/>
           </div>
         </div>
       </aside>

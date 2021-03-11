@@ -25,6 +25,9 @@ export default class DeleteVehicleForm extends Component {
       this.setState({brandCountry: this.state.brandCountry = this.props.obj.model.brand.country.name});
     } 
   }
+  sendBackCloseModalRequest = () => {
+    this.props.parentCallbackCloseModal();
+  }
    render() { 
      return (
       <form onSubmit={this.props.onSubmit}>
@@ -38,7 +41,8 @@ export default class DeleteVehicleForm extends Component {
           <button className="btn btn-danger confirm_buttons" type="submit">
             Yes
           </button>
-          <button className="btn btn-secondary confirm_buttons" type="button">
+          <button className="btn btn-secondary confirm_buttons" type="button"
+          onClick={this.sendBackCloseModalRequest}>
             No
           </button>
         </div>
