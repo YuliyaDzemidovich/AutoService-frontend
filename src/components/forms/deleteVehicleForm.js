@@ -4,12 +4,12 @@ export default class DeleteVehicleForm extends Component {
   constructor(props) {
       super(props);
       this.state = {
-          brand: "",
-          model: "",
-          year: "",
-          color: "",
-          vin: "",
-          brandCountry: ""
+        brand: "",
+        model: "",
+        year: "",
+        color: "",
+        vin: "",
+        brandCountry: ""
       }
   }
   componentDidMount() {
@@ -28,9 +28,15 @@ export default class DeleteVehicleForm extends Component {
   sendBackCloseModalRequest = () => {
     this.props.parentCallbackCloseModal();
   }
+  onSubmit = (event) => {
+    event.preventDefault();
+    this.sendBackCloseModalRequest();
+    console.log("delete submit");
+    console.log(this.state);
+  }
    render() { 
      return (
-      <form onSubmit={this.props.onSubmit}>
+      <form onSubmit={this.onSubmit}>
         <div>
           <label>Delete this vehicle?</label>
         </div>
@@ -42,7 +48,7 @@ export default class DeleteVehicleForm extends Component {
             Yes
           </button>
           <button className="btn btn-secondary confirm_buttons" type="button"
-          onClick={this.sendBackCloseModalRequest}>
+            onClick={this.sendBackCloseModalRequest}>
             No
           </button>
         </div>

@@ -4,12 +4,12 @@ export default class EditVehicleForm extends Component {
   constructor(props) {
       super(props);
       this.state = {
-          brand: "",
-          model: "",
-          year: "",
-          color: "",
-          vin: "",
-          brandCountry: ""
+        brand: "",
+        model: "",
+        year: "",
+        color: "",
+        vin: "",
+        brandCountry: ""
       }
   }
   componentDidMount() {
@@ -25,16 +25,30 @@ export default class EditVehicleForm extends Component {
       this.setState({brandCountry: this.state.brandCountry = this.props.obj.model.brand.country.name});
     } 
   }
+  sendBackCloseModalRequest = () => {
+    this.props.parentCallbackCloseModal();
+  }
+  onSubmit = (event) => {
+    event.preventDefault();
+    this.sendBackCloseModalRequest();
+    console.log("add/edit submit");
+    console.log(this.state);
+  }
+  handleChange(event, field) {
+    this.setState({[field]: event.target.value});
+  }
    render() { 
      return (
-      <form onSubmit={this.props.onSubmit}>
+      <form onSubmit={this.onSubmit}>
         <div className="form-group">
           <label htmlFor="brand">Brand</label>
-          <input className="form-control" id="brand" type="text" defaultValue={this.state.brand}/>
+          <input className="form-control" id="brand" type="text" defaultValue={this.state.brand}
+            onChange={(event)=>this.handleChange(event, "brand")}/>
         </div>
         <div className="form-group">
           <label htmlFor="model">Model</label>
-          <input className="form-control" id="model" type="text" defaultValue={this.state.model}/>
+          <input className="form-control" id="model" type="text" defaultValue={this.state.model}
+            onChange={(event)=>this.handleChange(event, "model")}/>
         </div>
         <div className="form-group">
           <label htmlFor="year">Year</label>
@@ -43,11 +57,13 @@ export default class EditVehicleForm extends Component {
             id="year"
             placeholder="YYYY"
             type="text" 
-            defaultValue={this.state.year} />
+            defaultValue={this.state.year} 
+            onChange={(event)=>this.handleChange(event, "year")}/>
         </div>
         <div className="form-group">
           <label htmlFor="color">Color</label>
-          <input className="form-control" id="color" type="text" defaultValue={this.state.color}/>
+          <input className="form-control" id="color" type="text" defaultValue={this.state.color}
+            onChange={(event)=>this.handleChange(event, "color")}/>
         </div>
         <div className="form-group">
           <label htmlFor="vin">VIN</label>
@@ -56,11 +72,13 @@ export default class EditVehicleForm extends Component {
             id="vin"
             placeholder="17 signs"
             type="text" 
-            defaultValue={this.state.vin} />
+            defaultValue={this.state.vin} 
+            onChange={(event)=>this.handleChange(event, "vin")}/>
         </div>
         <div className="form-group">
           <label htmlFor="brand_country">Brand Country</label>
-          <input className="form-control" id="brand_country" type="text" defaultValue={this.state.brandCountry}/>
+          <input className="form-control" id="brand_country" type="text" defaultValue={this.state.brandCountry}
+            onChange={(event)=>this.handleChange(event, "brandCountry")}/>
         </div>
         <div className="form-group">
           <button className="form-control btn btn-primary" type="submit">

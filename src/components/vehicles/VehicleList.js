@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import Title from '../Title';
 import VehicleService from "../../service/VehicleService";
-import {styles} from "../../App.css";
 
 import ButtonContainer from "./ButtonContainer";
-import ReactTable from "react-table";
 
 export default class VehicleList extends Component {
     constructor(props) {
