@@ -24,7 +24,7 @@ export default class VehicleList extends Component {
         // console.log("componentDidUpdate");
     }
     refreshProducts() {
-        VehicleService.getAllVehicles()
+        VehicleService.getAll()
             .then(
                 response => {
                     this.setState({vehicles: response.data})

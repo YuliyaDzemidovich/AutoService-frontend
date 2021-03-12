@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import VehicleService from "../../service/VehicleService";
 
 export default class EditVehicleForm extends Component {
   constructor(props) {
@@ -28,11 +29,32 @@ export default class EditVehicleForm extends Component {
   sendBackCloseModalRequest = () => {
     this.props.parentCallbackCloseModal();
   }
+  getAddData = () => {
+    return {
+      "vin": this.state.vin,
+      "dateOfProduction": this.state.year,
+      "color": this.state.color,
+      "model": {
+        "name": this.state.model,
+        "brand": {
+          "name": this.state.brand,
+          "country": {
+            "name": this.state.brandCountry
+          }
+        }
+      }
+    };
+  }
   onSubmit = (event) => {
     event.preventDefault();
     this.sendBackCloseModalRequest();
-    console.log("add/edit submit");
-    console.log(this.state);
+    if (this.props.triggerText == "Edit") {
+      console.log("edit submit");
+    } else if (this.props.triggerText == "Add") {
+      //console.log("add submit");
+      VehicleService.create(this.getAddData());
+    }
+    //console.log(this.state);
   }
   handleChange(event, field) {
     this.setState({[field]: event.target.value});
