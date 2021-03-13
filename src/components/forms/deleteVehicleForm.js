@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import VehicleService from "../../service/VehicleService";
 
 export default class DeleteVehicleForm extends Component {
   constructor(props) {
       super(props);
       this.state = {
+        id: 0,
         brand: "",
         model: "",
         year: "",
@@ -17,6 +19,7 @@ export default class DeleteVehicleForm extends Component {
   }
   getInfo() {
     if (this.props.triggerText == "Delete" && this.props.obj != null) {
+      this.setState({id: this.state.id = this.props.obj.id});
       this.setState({brand: this.state.brand = this.props.obj.model.brand.name});
       this.setState({model: this.state.model = this.props.obj.model.name});
       this.setState({year: this.state.year = this.props.obj.dateOfProduction});
@@ -31,8 +34,7 @@ export default class DeleteVehicleForm extends Component {
   onSubmit = (event) => {
     event.preventDefault();
     this.sendBackCloseModalRequest();
-    console.log("delete submit");
-    console.log(this.state);
+    VehicleService.remove(this.state.id);
   }
    render() { 
      return (

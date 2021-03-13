@@ -5,6 +5,7 @@ export default class EditVehicleForm extends Component {
   constructor(props) {
       super(props);
       this.state = {
+        id: 0,
         brand: "",
         model: "",
         year: "",
@@ -18,6 +19,7 @@ export default class EditVehicleForm extends Component {
   }
   getInfo() {
     if (this.props.triggerText == "Edit" && this.props.obj != null) {
+      this.setState({id: this.state.id = this.props.obj.id});
       this.setState({brand: this.state.brand = this.props.obj.model.brand.name});
       this.setState({model: this.state.model = this.props.obj.model.name});
       this.setState({year: this.state.year = this.props.obj.dateOfProduction});
@@ -45,13 +47,29 @@ export default class EditVehicleForm extends Component {
       }
     };
   }
+  getEditData = () => {
+    return {
+      "id": this.state.id,
+      "vin": this.state.vin,
+      "dateOfProduction": this.state.year,
+      "color": this.state.color,
+      "model": {
+        "name": this.state.model,
+        "brand": {
+          "name": this.state.brand,
+          "country": {
+            "name": this.state.brandCountry
+          }
+        }
+      }
+    };
+  }
   onSubmit = (event) => {
     event.preventDefault();
     this.sendBackCloseModalRequest();
     if (this.props.triggerText == "Edit") {
       console.log("edit submit");
     } else if (this.props.triggerText == "Add") {
-      //console.log("add submit");
       VehicleService.create(this.getAddData());
     }
     //console.log(this.state);

@@ -15,15 +15,15 @@ export default class VehicleList extends Component {
             isTableRowSelected: false,
             objectForEdit: null
         }
-        this.refreshProducts = this.refreshProducts.bind(this);
+        this.refreshVehicleTable = this.refreshVehicleTable.bind(this);
     }
     componentDidMount() {
-        this.refreshProducts();
+        this.refreshVehicleTable();
     }
     componentDidUpdate() {
         // console.log("componentDidUpdate");
     }
-    refreshProducts() {
+    refreshVehicleTable() {
         VehicleService.getAll()
             .then(
                 response => {
