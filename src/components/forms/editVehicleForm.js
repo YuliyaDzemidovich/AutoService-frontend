@@ -31,25 +31,8 @@ export default class EditVehicleForm extends Component {
   sendBackCloseModalRequest = () => {
     this.props.parentCallbackCloseModal();
   }
-  getAddData = () => {
+  getData = () => {
     return {
-      "vin": this.state.vin,
-      "dateOfProduction": this.state.year,
-      "color": this.state.color,
-      "model": {
-        "name": this.state.model,
-        "brand": {
-          "name": this.state.brand,
-          "country": {
-            "name": this.state.brandCountry
-          }
-        }
-      }
-    };
-  }
-  getEditData = () => {
-    return {
-      "id": this.state.id,
       "vin": this.state.vin,
       "dateOfProduction": this.state.year,
       "color": this.state.color,
@@ -68,11 +51,10 @@ export default class EditVehicleForm extends Component {
     event.preventDefault();
     this.sendBackCloseModalRequest();
     if (this.props.triggerText == "Edit") {
-      console.log("edit submit");
+      VehicleService.update(this.state.id, this.getData());
     } else if (this.props.triggerText == "Add") {
-      VehicleService.create(this.getAddData());
+      VehicleService.create(this.getData());
     }
-    //console.log(this.state);
   }
   handleChange(event, field) {
     this.setState({[field]: event.target.value});
