@@ -31,10 +31,30 @@ export default class DeleteVehicleForm extends Component {
   sendBackCloseModalRequest = () => {
     this.props.parentCallbackCloseModal();
   }
+  sendBackUpdateTableRequest = () => {
+    this.props.parentCallbackUpdateTable();
+  }
+  getData = () => {
+    return {
+      "vin": this.state.vin,
+      "dateOfProduction": this.state.year,
+      "color": this.state.color,
+      "model": {
+        "name": this.state.model,
+        "brand": {
+          "name": this.state.brand,
+          "country": {
+            "name": this.state.brandCountry
+          }
+        }
+      }
+    };
+  }
   onSubmit = (event) => {
     event.preventDefault();
     this.sendBackCloseModalRequest();
-    VehicleService.remove(this.state.id);
+    VehicleService.remove(this.state.id, this.getData());
+    this.sendBackUpdateTableRequest();
   }
    render() { 
      return (

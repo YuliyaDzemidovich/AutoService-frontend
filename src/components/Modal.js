@@ -11,7 +11,8 @@ export const Modal = ({
   onKeyDown,
   modalRef,
   buttonRef,
-  closeModal
+  closeModal,
+  parentCallbackUpdateTable
 }) => {
   return ReactDOM.createPortal(
     <FocusTrap>
@@ -40,7 +41,7 @@ export const Modal = ({
             </svg>
           </button>
           <div className="modal-body">
-            <FormSwitcher parentCallbackCloseModal={closeModal} type={type} triggerText={triggerText} obj={obj}/>
+            <FormSwitcher parentCallbackCloseModal={closeModal} parentCallbackUpdateTable={parentCallbackUpdateTable} type={type} triggerText={triggerText} obj={obj}/>
           </div>
         </div>
       </aside>

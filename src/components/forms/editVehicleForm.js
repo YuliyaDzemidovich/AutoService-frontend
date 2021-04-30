@@ -31,6 +31,9 @@ export default class EditVehicleForm extends Component {
   sendBackCloseModalRequest = () => {
     this.props.parentCallbackCloseModal();
   }
+  sendBackUpdateTableRequest = () => {
+    this.props.parentCallbackUpdateTable();
+  }
   getData = () => {
     return {
       "vin": this.state.vin,
@@ -55,6 +58,7 @@ export default class EditVehicleForm extends Component {
     } else if (this.props.triggerText == "Add") {
       VehicleService.create(this.getData());
     }
+    this.sendBackUpdateTableRequest();
   }
   handleChange(event, field) {
     this.setState({[field]: event.target.value});

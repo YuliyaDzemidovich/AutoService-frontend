@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Modal } from './Modal';
 import TriggerButton from './TriggerButton';
 export class Container extends Component {
+  constructor(props) {
+    super(props);
+    };
   state = { isShown: false };
   showModal = () => {
     this.setState({ isShown: true }, () => {
@@ -23,6 +26,10 @@ export class Container extends Component {
     if (this.modal && this.modal.contains(event.target)) return;
     this.closeModal();
   }; */
+  updateTable = () => {
+    this.props.parentCallbackUpdateTable();
+    //console.log("on Container level");
+  }
 
   toggleScrollLock = () => {
     document.querySelector('html').classList.toggle('scroll-lock');
@@ -45,6 +52,7 @@ export class Container extends Component {
             type={this.props.type}
             obj={this.props.obj}
             triggerText={this.props.triggerText}
+            parentCallbackUpdateTable={this.updateTable}
             /* onClickOutside={this.onClickOutside} */
           />
         ) : null}

@@ -16,6 +16,7 @@ export default class VehicleList extends Component {
             objectForEdit: null
         }
         this.refreshVehicleTable = this.refreshVehicleTable.bind(this);
+        this.updateTable = this.updateTable.bind(this);
     }
     componentDidMount() {
         this.refreshVehicleTable();
@@ -60,6 +61,14 @@ export default class VehicleList extends Component {
             }
         )
     }
+    updateTable () {
+        // TODO: update data without page refresh
+        //this.refreshVehicleTable();
+        //this.setState({isTableRowSelected: this.state.isTableRowSelected = false,
+                       // objectForEdit: this.state.objectForEdit = null});
+        //this.refreshVehicleTable();
+        window.location.reload();
+    }
     render() {
         return (
             <React.Fragment>
@@ -67,11 +76,11 @@ export default class VehicleList extends Component {
                     <div className="container">
                         <Title name="Vehicles"></Title>
                         <div className="py-2 crudButtons">
-                            <ButtonContainer text="Add" type="vehicle"/>
+                            <ButtonContainer text="Add" type="vehicle" parentCallbackUpdateTable={this.updateTable}/>
                             <ButtonContainer className={this.state.isTableRowSelected ? "" : "btn-disable"} type="vehicle" 
-                                text="Edit" obj={this.state.objectForEdit}/>
+                                text="Edit" obj={this.state.objectForEdit} parentCallbackUpdateTable={this.updateTable}/>
                             <ButtonContainer className={this.state.isTableRowSelected ? "" : "btn-disable"} type="vehicle" 
-                                text="Delete" obj={this.state.objectForEdit}/>
+                                text="Delete" obj={this.state.objectForEdit} parentCallbackUpdateTable={this.updateTable}/>
                         </div>
                         <table className="table">
                             <thead>
