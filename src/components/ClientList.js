@@ -1,59 +1,99 @@
 import React, { Component } from "react";
-import Product from './Product';
 import Title from './Title';
-import {storeProducts} from '../data';
-import {ProductConsumer} from '../context';
-import BookDataService from "../service/BookDataService";
+import ClientService from "../service/ClientService";
+
+import ButtonContainer from "./ButtonContainer";
 
 export default class ClientList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            books: [],
-            message: null
+            clients: [],
+            message: null,
+            rowEdit: null,
+            selectedRowIndex: [],
+            isTableRowSelected: false,
+            objectForEdit: null
         }
-        this.refreshProducts = this.refreshProducts.bind(this);
+        this.refreshClients = this.refreshClients.bind(this);
+        this.updateTable = this.updateTable.bind(this);
     }
     componentDidMount() {
-        this.refreshProducts();
+        this.refreshClients();
     }
-    refreshProducts() {
-        BookDataService.getAllBooks()
+    refreshClients() {
+        ClientService.getAllClients()
             .then(
                 response => {
-                    console.log(response);
-                    this.setState({books: response.data})
+                    this.setState({clients: response.data})
                 }
             )
     }
+    prepareEdit (id, e) {
+        this.selectRow(id,e);
+        this.getObjectForEdit();
+    }
+    selectRow (id, e) {
+        e.preventDefault();
+        // selection uncheck - the same row was clicked
+        if  (this.state.isTableRowSelected && this.state.selectedRowIndex === id) {
+            this.setState({selectedRowIndex: this.state.selectedRowIndex = null,
+                            isTableRowSelected: this.state.isTableRowSelected = false});
+        }
+        // select a different row - another row was selected
+        else if  (this.state.isTableRowSelected && this.state.selectedRowIndex !== id) {
+            this.setState({selectedRowIndex: this.state.selectedRowIndex = id});
+        // select a row - no row was selected
+        } else {
+            this.setState({selectedRowIndex: this.state.selectedRowIndex = id,
+                            isTableRowSelected: this.state.isTableRowSelected = true});
+        }
+    }
+    getObjectForEdit () {
+        this.state.clients.map(
+            client => {
+                if (client.id === this.state.selectedRowIndex) {
+                    this.setState({objectForEdit: this.state.objectForEdit = client});
+                }
+            }
+        )
+    }
+    updateTable () {
+        // TODO: update data without page refresh
+        window.location.reload();
+    }   
     render() {
         return (
             <React.Fragment>
                 <div className="py-5">
                     <div className="container">
                         <Title name="Clients"></Title>
+                        <div className="py-2 crudButtons">
+                            <ButtonContainer text="Add" type="client" parentCallbackUpdateTable={this.updateTable}/>
+                            <ButtonContainer className={this.state.isTableRowSelected ? "" : "btn-disable"} type="client" 
+                                text="Edit" obj={this.state.objectForEdit} parentCallbackUpdateTable={this.updateTable}/>
+                            <ButtonContainer className={this.state.isTableRowSelected ? "" : "btn-disable"} type="client" 
+                                text="Delete" obj={this.state.objectForEdit} parentCallbackUpdateTable={this.updateTable}/>
+                        </div>
                         <table className="table">
                             <thead>
                                 <tr>
-                                    <th>Title</th>
-                                    <th>AuthorId</th>
-                                    <th>PublisherId</th>
-                                    <th>Year</th>
-                                    <th>ISBN</th>
-                                    <th>TypeId</th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
+                                    <th>Date of Birth</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
-                                    this.state.books.map(
-                                        book =>
-                                            <tr key={book.id}>
-                                                <td>{book.title}</td>
-                                                <td>{book.authorId}</td>
-                                                <td>{book.publisherId}</td>
-                                                <td>{book.year}</td>
-                                                <td>{book.ISBN}</td>
-                                                <td>{book.typeId}</td>
+                                    this.state.clients.map(
+                                        client =>
+                                            <tr key={client.id} onClick={(e) => this.prepareEdit(client.id, e)} 
+                                            className={this.state.selectedRowIndex == client.id ? "selected-row" : "" }>
+                                                <td>{client.surname} {client.name} {client.patronage}</td>
+                                                <td>{client.phone}</td>
+                                                <td>{client.address}</td>
+                                                <td>{client.dateOfBirth}</td>
                                             </tr>
                                     )
                                 }
