@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Title from '../Title';
-import VehicleService from "../../service/VehicleService";
+import Title from './Title';
+import VehicleService from "../service/VehicleService";
 
 import ButtonContainer from "./ButtonContainer";
 
@@ -20,9 +20,6 @@ export default class VehicleList extends Component {
     }
     componentDidMount() {
         this.refreshVehicleTable();
-    }
-    componentDidUpdate() {
-        // console.log("componentDidUpdate");
     }
     refreshVehicleTable() {
         VehicleService.getAll()

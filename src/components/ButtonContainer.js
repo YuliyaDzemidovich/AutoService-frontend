@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from '../Container';
+import { Container } from './Container';
 
 const ButtonContainer = ({text, type, className, obj, parentCallbackUpdateTable}) => {
   const triggerText = text;
