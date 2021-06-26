@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const AUTOSERVICE_API = 'http://localhost:8080/AutoService'
+const AUTOSERVICE_API = 'http://localhost:8080'
 
 class OrderService {
     getAllOrders() {

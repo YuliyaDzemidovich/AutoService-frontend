@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Form } from './Form';
 import {FormSwitcher} from './FormSwitcher';
 import FocusTrap from 'focus-trap-react';
 export const Modal = ({
